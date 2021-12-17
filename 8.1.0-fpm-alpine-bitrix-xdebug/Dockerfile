@@ -16,6 +16,8 @@ RUN apk add --no-cache --update \
     gd \
     mysqli \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && apk del autoconf gcc g++ make \
+    && docker-php-source delete \
     && rm -rf /var/cache/apk/* /tmp/*
 
 COPY config/php.ini /usr/local/etc/php/conf.d/50-setting.ini
