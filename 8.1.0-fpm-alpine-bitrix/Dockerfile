@@ -5,15 +5,15 @@ RUN apk update && apk add \
     libpng-dev \
     libjpeg-turbo-dev \
     freetype-dev \
-    && rm -rf /var/cache/apk/*
-
-RUN docker-php-ext-configure \
+    && docker-php-ext-configure \
     gd --with-freetype --with-jpeg \
     && docker-php-ext-enable \
     opcache \
     && docker-php-ext-install \
     gd \
-    mysqli
+    mysqli \
+    && docker-php-source delete \
+    && rm -rf /var/cache/apk/*
 
 COPY config/php.ini /usr/local/etc/php/conf.d/50-setting.ini
 
