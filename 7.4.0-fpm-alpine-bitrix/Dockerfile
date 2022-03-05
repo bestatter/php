@@ -16,12 +16,10 @@ RUN apk update && apk add \
     sockets \
     xml \
     zip \
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && docker-php-source delete \
     && rm -rf /var/cache/apk/*
 
 COPY config/php.ini /usr/local/etc/php/conf.d/50-setting.ini
 
 ENV BITRIX_VA_VER="7.5.0"
-
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
