@@ -24,6 +24,8 @@ RUN apk add --no-cache --update \
     && docker-php-source delete \
     && rm -rf /var/cache/apk/* /tmp/*
 
+COPY start /usr/local/bin/start
+COPY rootCA.pem /usr/local/share/ca-certificates/rootCA.pem
 COPY config/php.ini /usr/local/etc/php/conf.d/50-setting.ini
 
 ENV BITRIX_VA_VER="7.5.0"
