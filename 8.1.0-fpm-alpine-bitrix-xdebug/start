@@ -1,7 +1,7 @@
 #!/bin/ash
 
 if [[ ! -z "${MAILHOG_HOST}" ]]; then
-    echo "sendmail_path = sendmail -S $MAILHOG_HOST:1025" >> /usr/local/etc/php/conf.d/50-setting.ini
+    echo -e "\nsendmail_path = sendmail -S $MAILHOG_HOST:1025" >> /usr/local/etc/php/conf.d/50-setting.ini
 fi
 
 usermod -s /bin/ash www-data
