@@ -1,5 +1,9 @@
 FROM php:8.1.0-fpm-alpine
 
+COPY start /usr/local/bin/start
+COPY rootCA.pem /usr/local/share/ca-certificates/rootCA.pem
+COPY config/php.ini /usr/local/etc/php/conf.d/50-setting.ini
+
 RUN apk update && apk add \
     libxml2-dev \
     libzip-dev \
@@ -18,10 +22,10 @@ RUN apk update && apk add \
     zip \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && docker-php-source delete \
+    && update-ca-certificates --fresh \
+    && chmod ugo+x /usr/local/bin/start \
     && rm -rf /var/cache/apk/*
 
-COPY start /usr/local/bin/start
-COPY rootCA.pem /usr/local/share/ca-certificates/rootCA.pem
-COPY config/php.ini /usr/local/etc/php/conf.d/50-setting.ini
-
 ENV BITRIX_VA_VER="7.5.0"
+
+CMD ["/usr/local/bin/start"]
