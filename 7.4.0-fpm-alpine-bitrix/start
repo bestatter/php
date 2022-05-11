@@ -11,7 +11,7 @@ if [[ ! -z "${GID}" ]]; then
 fi
 
 if [[ ! -z "${UID}" ]]; then
-    usermod -u ${UID}
+    usermod -u ${UID} www-data
 fi
 
 su -l www-data

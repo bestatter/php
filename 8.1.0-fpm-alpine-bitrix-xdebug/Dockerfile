@@ -12,6 +12,7 @@ RUN apk add --no-cache --update \
     freetype-dev \
     autoconf \
     gcc g++ make \
+    shadow \
     && pecl install xdebug \
     && docker-php-ext-configure \
     gd --with-freetype --with-jpeg \

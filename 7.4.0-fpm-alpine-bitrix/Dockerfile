@@ -10,6 +10,7 @@ RUN apk update && apk add \
     libpng-dev \
     libjpeg-turbo-dev \
     freetype-dev \
+    shadow \
     && docker-php-ext-configure \
     gd --with-freetype --with-jpeg \
     && docker-php-ext-enable \
