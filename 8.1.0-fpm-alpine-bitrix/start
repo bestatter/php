@@ -7,11 +7,11 @@ fi
 usermod -s /bin/ash www-data
 
 if [[ ! -z "${GID}" ]]; then
-    groupmod -g ${GID} www-data
+    groupmod -g $GID www-data
 fi
 
 if [[ ! -z "${UID}" ]]; then
-    usermod -u ${UID} www-data
+    usermod -u $UID www-data
 fi
 
 su -l www-data
