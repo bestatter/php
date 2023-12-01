@@ -1,16 +1,19 @@
 #!/bin/ash
 
-if [[ ! -z "${MAILHOG_HOST}" ]]; then
+if [[ ! -z "${MAILHOG_HOST}" ]]
+then
     echo -e "\nsendmail_path = sendmail -S $MAILHOG_HOST:1025" >> /usr/local/etc/php/conf.d/50-setting.ini
 fi
 
 usermod -s /bin/ash www-data
 
-if [[ ! -z "${GID}" ]]; then
+if [[ ! -z "${GID}" ]]
+then
     groupmod -g $GID www-data
 fi
 
-if [[ ! -z "${UID}" ]]; then
+if [[ ! -z "${UID}" ]]
+then
     usermod -u $UID www-data
 fi
 
